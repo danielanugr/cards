@@ -38,12 +38,12 @@ func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
 
-func (d deck) saveToFile(filename string) error {
+func (d deck) saveToFile(filename string) {
+	err := os.WriteFile(filename, []byte(d.toString()), 0666)
 	if err != nil {
 		fmt.Println("Error", err)
 		os.Exit(1)
 	}
-	return os.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
 func loadFromFile(filename string) deck {
