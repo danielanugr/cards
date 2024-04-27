@@ -39,6 +39,10 @@ func (d deck) toString() string {
 }
 
 func (d deck) saveToFile(filename string) error {
+	if err != nil {
+		fmt.Println("Error", err)
+		os.Exit(1)
+	}
 	return os.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
